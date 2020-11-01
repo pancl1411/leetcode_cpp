@@ -17,7 +17,7 @@
  */
 class Solution {
 public:
-	// Recursive Solutions
+	// (1) Recursive Solutions
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
         // special case
 		if (l1 == nullptr)
