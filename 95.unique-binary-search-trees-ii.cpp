@@ -42,7 +42,8 @@ class Solution {
             {
                 for ( auto right_iter : right)
                 {
-                    TreeNode* root = new TreeNode(i); // root节点在循环体内，避免被覆盖
+                    // root节点在循环体内，避免被覆盖
+                    TreeNode* root = new TreeNode(i); 
                     root->left = left_iter;
                     root->right = right_iter;
                     answer.push_back(root);
