@@ -17,6 +17,7 @@
  * };
  */
 #include <vector>
+#include <queue>
 class Solution {
 private:
     // DFS 实现
@@ -35,10 +36,40 @@ private:
         //
         levelOrderDFS(root->right, depth + 1, answer);
     }
+
+    // BFS 实现
+    void levelOrderBFS(TreeNode* root, std::vector<std::vector<int>>& answer)
+    {
+        // init
+        std::queue<TreeNode*> bfs_queue;
+        TreeNode* node = nullptr;
+        bfs_queue.push(root);
+        // BFS
+        while (!bfs_queue.empty())
+        {
+            std::vector<int> level_val;
+            int level_size = bfs_queue.size();  // 规避queue的size变化，导致循环次数错误
+            for (int i = 0; i < level_size; i++)
+            {
+                //
+                node = bfs_queue.front();
+                bfs_queue.pop();
+                //
+                level_val.push_back(node->val);
+                //
+                if(node->left != nullptr) bfs_queue.push(node->left);
+                if(node->right != nullptr) bfs_queue.push(node->right);
+            }
+            answer.push_back(level_val);
+        }
+    }
 public:
     std::vector<std::vector<int>> levelOrder(TreeNode* root) {
         std::vector<std::vector<int>> answer;
-        levelOrderDFS(root, 0, answer);
+        if (root == nullptr) return answer;
+        
+        //levelOrderDFS(root, 0, answer);
+        levelOrderBFS(root, answer);
         return answer;
     }
 };
