@@ -21,7 +21,12 @@ public:
     int kthSmallest(TreeNode* root, int k) {
         if (root == nullptr)
         {
+            // TODO: 此处可能不合适
             return 0;
+        }
+        if (node_cout >= k)
+        {
+            return kth_val;
         }
         // left
         kthSmallest(root->left, k);
