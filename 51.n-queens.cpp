@@ -39,35 +39,25 @@ private:
 
     bool isVaildPlace(std::vector<std::string>& board, int col, int row)
     {
-        int i = 0;
-        int j = 0;
-        for (i = col - 1; i >= 0; i--)
+        for (int i = col - 1; i >= 0; i--)
         {
             // the row has queue
             if (board[i][row] == 'Q')
                 return false;
         }
 
-        i = col - 1;
-        j = row - 1;
-        while (i >= 0 && j >= 0)
+        for (int i = col-1, j = row-1; i >= 0 && j >= 0; i--, j--)
         {
             // the left-up has queue
             if (board[i][j] == 'Q')
                 return false;
-            i--;
-            j--;
         }
 
-        i = col - 1;
-        j = row + 1;
-        while (i >= 0 && j < board.size())
+        for (int i = col-1, j = row+1; i >= 0 && j < board.size(); i--, j++)
         {
             // the right-up has queue
             if (board[i][j] == 'Q')
                 return false;
-            i--;
-            j++;
         }
 
         return true;
