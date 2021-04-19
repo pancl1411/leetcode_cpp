@@ -12,11 +12,11 @@ func rob(nums []int) int {
 	}
 	//
 	dp := make([]int, len(nums)+1)
-	dp[1] = nums[0]
+	dp[1] = nums[0] //注意起点不同
 	//
-	for i := 1; i < len(nums); i++ {
+	for i := 2; i < len(dp); i++ {
 		// 偷窃第 k 间房屋，那么就不能偷窃第 k-1 间房屋
-		dp[i+1] = max(dp[i], dp[i-1]+nums[i])
+		dp[i] = max(dp[i-1], dp[i-2]+nums[i-1])
 	}
 	//
 	return dp[len(dp)-1]
