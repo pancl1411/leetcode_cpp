@@ -5,6 +5,8 @@
  */
 
 // @lc code=start
+
+// tricks : 滑动窗口，右侧边界递增，左侧边界视map情况增长
 func lengthOfLongestSubstring(s string) int {
 	has := make(map[byte]int)
 	var start, maxLen int
