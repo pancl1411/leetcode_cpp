@@ -14,7 +14,7 @@ func productExceptSelf(nums []int) []int {
 	}
 	// 左侧乘积
 	right := 1
-	answer := left[:] //指向同一个底层数组
+	answer := left[:] //指向同一个底层数组add
 	//
 	for i := len(nums) - 1; i >= 0; i-- {
 		answer[i] = left[i] * right
