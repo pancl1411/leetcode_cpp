@@ -9,9 +9,9 @@ func maxProduct(nums []int) int {
 	if len(nums) == 0 {
 		return 0
 	}
-
+	// positive, negtive
 	var p, n, result int = max(0, nums[0]), min(0, nums[0]), nums[0]
-	// 注意边界条件i
+	// 注意边界条件i，注意0的重置
 	for i := 1; i < len(nums); i++ {
 		if nums[i] == 0 {
 			p = 0
